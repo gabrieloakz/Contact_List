@@ -1,0 +1,10 @@
+C:\Users\53023\Documents\GitHub\Contact_List\Contact_List\bin\Debug\Contact_List.exe.config
+C:\Users\53023\Documents\GitHub\Contact_List\Contact_List\bin\Debug\Contact_List.exe
+C:\Users\53023\Documents\GitHub\Contact_List\Contact_List\bin\Debug\Contact_List.pdb
+C:\Users\53023\Documents\GitHub\Contact_List\Contact_List\obj\Debug\Contact_List.csproj.AssemblyReference.cache
+C:\Users\53023\Documents\GitHub\Contact_List\Contact_List\obj\Debug\Contact_List.Form1.resources
+C:\Users\53023\Documents\GitHub\Contact_List\Contact_List\obj\Debug\Contact_List.Properties.Resources.resources
+C:\Users\53023\Documents\GitHub\Contact_List\Contact_List\obj\Debug\Contact_List.csproj.GenerateResource.cache
+C:\Users\53023\Documents\GitHub\Contact_List\Contact_List\obj\Debug\Contact_List.csproj.CoreCompileInputs.cache
+C:\Users\53023\Documents\GitHub\Contact_List\Contact_List\obj\Debug\Contact_List.exe
+C:\Users\53023\Documents\GitHub\Contact_List\Contact_List\obj\Debug\Contact_List.pdb
