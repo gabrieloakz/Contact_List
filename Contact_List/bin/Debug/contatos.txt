@@ -1,2 +1,4 @@
-gagaga,ssss,ajajaj
-jsjjss,swsss,aaaa
+gagaga,ssss,ajajaj,0,,,01/01/0001 00:00:00
+jsjjss,swsss,aaaa,0,,,01/01/0001 00:00:00
+gabriel,123456789,q@gmail.com,0,,,01/01/0001 00:00:00
+gabriel,123456789,d@gmail.com,55,ele/dele,rua tal,07/03/2024 12:59:38

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,12 +22,30 @@ namespace Contact_List
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
+            // Validar se o telefone possui exatamente 9 dígitos
+            if (!string.IsNullOrEmpty(txtTelefone.Text) && !Regex.IsMatch(txtTelefone.Text, @"^\d{9}$"))
+            {
+                MessageBox.Show("Por favor, insira um número de telefone com 9 dígitos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Validar se o email possui uma estrutura válida
+            if (!string.IsNullOrEmpty(txtEmail.Text) && !Regex.IsMatch(txtEmail.Text, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"))
+            {
+                MessageBox.Show("Por favor, insira um endereço de email válido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             // Adicionar um novo contato à lista
             Contato novoContato = new Contato
             {
                 Nome = txtNome.Text,
                 Telefone = txtTelefone.Text,
-                Email = txtEmail.Text
+                Email = txtEmail.Text,
+                DDD = string.IsNullOrEmpty(txtDDD.Text) ? 0 : int.Parse(txtDDD.Text),
+                Pronome = txtPronome.Text,
+                Morada = txtMorada.Text,
+               
             };
             contatos.Add(novoContato);
 
@@ -43,7 +62,9 @@ namespace Contact_List
                 {
                     foreach (Contato contato in contatos)
                     {
-                        writer.WriteLine($"{contato.Nome},{contato.Telefone},{contato.Email}");
+                        // Formatando a linha para incluir todos os detalhes do contato
+                        string linha = $"{contato.Nome},{contato.Telefone},{contato.Email},{contato.DDD},{contato.Pronome},{contato.Morada}";
+                        writer.WriteLine(linha);
                     }
                 }
                 MessageBox.Show("Contatos salvos com sucesso!");
@@ -56,7 +77,6 @@ namespace Contact_List
 
         private void btnAbrirLista_Click(object sender, EventArgs e)
         {
-            // Abrir a lista de contatos de um ficheiro
             try
             {
                 using (StreamReader reader = new StreamReader("contatos.txt"))
@@ -65,12 +85,25 @@ namespace Contact_List
                     while ((linha = reader.ReadLine()) != null)
                     {
                         string[] dados = linha.Split(',');
+
+                        // Verificar se a linha possui todos os campos necessários
+                        if (dados.Length < 3)
+                        {
+                            MessageBox.Show("Erro ao carregar contatos: formato de linha inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
                         Contato contato = new Contato
                         {
                             Nome = dados[0],
                             Telefone = dados[1],
-                            Email = dados[2]
+                            Email = dados[2],
+                            DDD = dados.Length > 3 ? (int.TryParse(dados[3], out int ddd) ? ddd : 0) : 0,
+                            Pronome = dados.Length > 4 ? dados[4] : "",
+                            Morada = dados.Length > 5 ? dados[5] : "",
+                            
                         };
+
                         contatos.Add(contato);
                         listBoxContatos.Items.Add(contato);
                     }
@@ -91,10 +124,13 @@ namespace Contact_List
             public string Nome { get; set; }
             public string Telefone { get; set; }
             public string Email { get; set; }
+            public int DDD { get; set; }
+            public string Pronome { get; set; }
+            public string Morada { get; set; }
 
             public override string ToString()
             {
-                return $"{Nome} - {Telefone} - {Email}";
+                return $"{Nome} - {Telefone} - {Email} - {DDD} - {Pronome} - {Morada} - ";
             }
         }
     }
