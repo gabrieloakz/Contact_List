@@ -20,8 +20,15 @@ namespace Contact_List
             InitializeComponent();
         }
 
-        private void btnAdicionar_Click(object sender, EventArgs e)
+        private void btnAdicionar_Click(object sender, EventArgs e) 
         {
+            /// Verificar se os campos obrigatórios (nome, telefone e email) estão preenchidos
+            if (string.IsNullOrWhiteSpace(txtNome.Text) || string.IsNullOrWhiteSpace(txtTelefone.Text) || string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                MessageBox.Show("Por favor, preencha todos os campos obrigatórios (Nome, Telefone e Email).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             // Validar se o telefone possui exatamente 9 dígitos
             if (!string.IsNullOrEmpty(txtTelefone.Text) && !Regex.IsMatch(txtTelefone.Text, @"^\d{9}$"))
             {
@@ -45,7 +52,7 @@ namespace Contact_List
                 DDD = string.IsNullOrEmpty(txtDDD.Text) ? 0 : int.Parse(txtDDD.Text),
                 Pronome = txtPronome.Text,
                 Morada = txtMorada.Text,
-               
+                
             };
             contatos.Add(novoContato);
 
@@ -132,6 +139,57 @@ namespace Contact_List
             {
                 return $"{Nome} - {Telefone} - {Email} - {DDD} - {Pronome} - {Morada} - ";
             }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (listBoxContatos.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor, selecione um contato para editar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Contato contatoSelecionado = (Contato)listBoxContatos.SelectedItem;
+            // Exibir os detalhes do contato selecionado em controles de entrada (por exemplo, TextBox)
+            txtNome.Text = contatoSelecionado.Nome;
+            txtTelefone.Text = contatoSelecionado.Telefone;
+            txtEmail.Text = contatoSelecionado.Email;
+            txtDDD.Text = contatoSelecionado.DDD.ToString();
+            txtPronome.Text = contatoSelecionado.Pronome;
+            txtMorada.Text = contatoSelecionado.Morada;
+            
+
+            // Remover o contato da lista
+            contatos.Remove(contatoSelecionado);
+            listBoxContatos.Items.Remove(contatoSelecionado);
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (listBoxContatos.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor, selecione um contato para excluir.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Contato contatoSelecionado = (Contato)listBoxContatos.SelectedItem;
+            // Exibir uma mensagem de confirmação antes de excluir o contato
+            DialogResult resultado = MessageBox.Show($"Tem certeza que deseja excluir o contato {contatoSelecionado.Nome}?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+                contatos.Remove(contatoSelecionado);
+                listBoxContatos.Items.Remove(contatoSelecionado);
+                MessageBox.Show("Contato excluído com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnLicenca_Click(object sender, EventArgs e)
+        {
+            // Exibir mensagem da licença
+            MessageBox.Show("Criador: Gabriel Carvalho (11ºE)\nVersão: 1.0\nCopyright © 2024\nTodos os direitos reservados.",
+                            "Licença",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
         }
     }
 }

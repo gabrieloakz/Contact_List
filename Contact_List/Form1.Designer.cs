@@ -45,8 +45,9 @@
             this.labelPronomes = new System.Windows.Forms.Label();
             this.labelMorada = new System.Windows.Forms.Label();
             this.txtMorada = new System.Windows.Forms.TextBox();
-            this.btnEditar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnLicenca = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelContactList
@@ -131,7 +132,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(57, 336);
+            this.label2.Location = new System.Drawing.Point(54, 336);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 10;
@@ -149,7 +150,7 @@
             // LABELDDD
             // 
             this.LABELDDD.AutoSize = true;
-            this.LABELDDD.Location = new System.Drawing.Point(58, 373);
+            this.LABELDDD.Location = new System.Drawing.Point(54, 370);
             this.LABELDDD.Name = "LABELDDD";
             this.LABELDDD.Size = new System.Drawing.Size(34, 13);
             this.LABELDDD.TabIndex = 12;
@@ -172,7 +173,7 @@
             // labelPronomes
             // 
             this.labelPronomes.AutoSize = true;
-            this.labelPronomes.Location = new System.Drawing.Point(57, 401);
+            this.labelPronomes.Location = new System.Drawing.Point(54, 401);
             this.labelPronomes.Name = "labelPronomes";
             this.labelPronomes.Size = new System.Drawing.Size(57, 13);
             this.labelPronomes.TabIndex = 15;
@@ -181,7 +182,7 @@
             // labelMorada
             // 
             this.labelMorada.AutoSize = true;
-            this.labelMorada.Location = new System.Drawing.Point(57, 433);
+            this.labelMorada.Location = new System.Drawing.Point(54, 433);
             this.labelMorada.Name = "labelMorada";
             this.labelMorada.Size = new System.Drawing.Size(46, 13);
             this.labelMorada.TabIndex = 16;
@@ -194,15 +195,6 @@
             this.txtMorada.Size = new System.Drawing.Size(100, 20);
             this.txtMorada.TabIndex = 17;
             // 
-            // btnEditar
-            // 
-            this.btnEditar.Location = new System.Drawing.Point(61, 495);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(75, 23);
-            this.btnEditar.TabIndex = 18;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
-            // 
             // btnExcluir
             // 
             this.btnExcluir.Location = new System.Drawing.Point(142, 495);
@@ -211,6 +203,27 @@
             this.btnExcluir.TabIndex = 19;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Location = new System.Drawing.Point(61, 495);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 23);
+            this.btnEditar.TabIndex = 18;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnLicenca
+            // 
+            this.btnLicenca.Location = new System.Drawing.Point(101, 524);
+            this.btnLicenca.Name = "btnLicenca";
+            this.btnLicenca.Size = new System.Drawing.Size(75, 23);
+            this.btnLicenca.TabIndex = 20;
+            this.btnLicenca.Text = "Liçença";
+            this.btnLicenca.UseVisualStyleBackColor = true;
+            this.btnLicenca.Click += new System.EventHandler(this.btnLicenca_Click);
             // 
             // Form1
             // 
@@ -218,6 +231,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(296, 564);
+            this.Controls.Add(this.btnLicenca);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.txtMorada);
@@ -264,8 +278,9 @@
         private System.Windows.Forms.Label labelPronomes;
         private System.Windows.Forms.Label labelMorada;
         private System.Windows.Forms.TextBox txtMorada;
-        private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnExcluir;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnLicenca;
     }
 }
 
